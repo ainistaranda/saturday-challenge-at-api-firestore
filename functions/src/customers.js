@@ -19,6 +19,13 @@ export async function getAllCustomers(req,res) {
     res.send(customers)
 }
 
+export async function updateCustomer(req,res) {
+    const { uid } = req.params
+    const db = dbConnect()
+    const doc = await db.collection('customers').doc(uid).update(req.body)
+    .catch(err => res.status(500).send({ success: false, message: err }))
+    res.status(202).send({ success: true, message: 'customer updated' + doc.id })
+}
 
 
 
