@@ -15,7 +15,7 @@ export async function getAllCustomers(req,res) {
         let customer = doc.data()
         customer.uid = doc.id
         return customer
-    })
+    }) 
     res.send(customers)
 }
 
